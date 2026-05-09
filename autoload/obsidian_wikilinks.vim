@@ -1,16 +1,6 @@
 vim9script
 
-# obsidian-wikilinks: adds wikilinks to vim similiar to Obsidian's
-# Last Change: 09-May-2026
-# Maintainer: suitablebeard
-# License:
-
-if exists('g:loaded_obsidian_wikilinks') 
-    finish 
-endif
-g:loaded_obsidian_wikilinks = 1
-
-def CreateWikilink(): string
+export def CreateWikilink(): string
     var col = col('.')
 
     # searches files using Vim's built-in 'find'
@@ -40,10 +30,3 @@ def CreateWikilink(): string
     return ''
 enddef
 
-augroup obsidianWikilinks
-    autocmd!
-    autocmd FileType markdown {
-        command! -nargs=0 -buffer ObsidianWikilink CreateWikilink()
-        inoremap <buffer> <silent> [[ [[<cmd>ObsidianWikilink<CR>
-    }
-augroup END
