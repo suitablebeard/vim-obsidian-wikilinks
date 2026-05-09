@@ -4,7 +4,7 @@ export def CreateWikilink(): string
     var col = col('.')
 
     # searches files using Vim's built-in 'find'
-    var files = globpath('.', '**/*', 0, 1)
+    var files = globpath(g:obsidian_wikilinks_default, '**/*', 0, 1)
 
     var completion_items = files->mapnew((_, file) => {
         var filename = fnamemodify(file, ':t:r')
