@@ -1,11 +1,12 @@
 # TODO
 
-1. Make file searching truly fuzzy and update results shown while typing
+1. Learn about <SID>, <PLUG> and others
+2. Make file searching truly fuzzy and update results shown while typing
     - this might not be needed with the since I have the 'completeopt' with the 'fuzzy' option
     - probably with ripgrep
     - take a look at the code from fuzzbox
     - take a look at 'completefunc' and 'complete-functions'
-2. Open file in wikilink when pressing a keybind
+3. Open file in wikilink when pressing a keybind
     - take a look at vim's special variable `<cfile>`, `<cWORD>` and its variations
     - if more than one result with the same name, show them in quickfix list
 
