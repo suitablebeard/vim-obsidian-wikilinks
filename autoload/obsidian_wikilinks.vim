@@ -45,6 +45,8 @@ export def OpenWikilink(): void
 enddef
 
 export def GetWikilinkUnderCursor(str: string, cursorPos: number): string
+    if strchars(getline('.')) == 0 | return '' | endif
+
     var cursorChar = str[cursorPos]
     var openBracketsIndex: number
     var closeBracketsIndex: number
