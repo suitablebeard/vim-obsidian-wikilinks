@@ -14,8 +14,8 @@ if exists('g:loaded_obsidian_wikilinks')
 endif
 g:loaded_obsidian_wikilinks = 1
 
-# Default fault directory to search for files
-g:obsidian_wikilinks_default = exists('g:obsidian_wikilinks_default') ? g:obsidian_wikilinks_default : '.'
+# Directory to search for files (default is the current directory)
+g:obsidian_wikilinks_default_directory = get(g:, 'obsidian_wikilinks_default_directory', '.')
 
 import autoload '../autoload/obsidian_wikilinks.vim' as wikilinks
 

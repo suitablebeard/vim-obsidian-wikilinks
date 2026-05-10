@@ -25,8 +25,8 @@ To make use of the wikilinks, first you need to be at a markdown file. Then, whe
 
 By default, the directory this plugin uses to find files is your current working directory, which you can see in Vim with `:pwd`.
 
-You can change the default directory by setting a path to `g:obsidian_wikilinks_default` in your `.vimrc`. Example bellow:
+You can change the default directory by setting a path to `g:obsidian_wikilinks_default_dir` in your `.vimrc`. Example bellow:
 
 ```vim9script
-let g:obsidian_wikilinks_default = '~/Documents/MyNotes/'
+let g:obsidian_wikilinks_default_dir = '~/Documents/MyNotes/'
 ```
