@@ -33,9 +33,9 @@ enddef
 
 export def OpenWikilink(): void
     var currentLine = getline('.')
-    var cursor_pos = col('.') - 1
+    var cursorPos = col('.') - 1
 
-    var wikilink: string = GetWikilinkUnderCursor(currentLine, cursor_pos)
+    var wikilink: string = GetWikilinkUnderCursor(currentLine, cursorPos)
     if wikilink ==# ''
         echom 'Your cursor must be inside a wikilink to open the file.'
         return
@@ -44,31 +44,33 @@ export def OpenWikilink(): void
     echom wikilink
 enddef
 
-export def GetWikilinkUnderCursor(str: string, cursor_pos: number): string
-    var cursor_char: string = str[cursor_pos]
+export def GetWikilinkUnderCursor(str: string, cursorPos: number): string
+    var cursorChar = str[cursorPos]
     var openBracketsIndex: number
     var closeBracketsIndex: number
 
     # Searches backwards for '[[' from the cursor
-    for i in range(cursor_pos, 0, -1)
+    var backwardsStartPos = (cursorChar ==# ']') ? cursorPos - 2 : cursorPos
+    for i in range(backwardsStartPos, 0, -1)
         var char: string = str[i]
         if char !~# '\[\|\]' | continue | endif
         if char ==# ']' | return '' | endif
 
         var doubleBrackets = GetDoubleBrackets(char, str, i)
-        openBracketsIndex = doubleBrackets != -1 ? doubleBrackets : v:null
-        break
+        openBracketsIndex = doubleBrackets != -1 ? doubleBrackets : -1
+        if openBracketsIndex != -1 | break | endif
     endfor
 
     # Searches forwards for ']]' from the cursor
-    for i in range(cursor_pos, strchars(str) - 1, 1)
+    var forwardStarPos = (openBracketsIndex != -1 && cursorChar !=# ']') ? cursorPos + 2 : cursorPos
+    for i in range(forwardStarPos, strchars(str) - 1, 1)
         var char: string = str[i]
         if char !~# '\[\|\]' | continue | endif
         if char ==# '[' | return '' | endif
 
         var doubleBrackets = GetDoubleBrackets(char, str, i)
-        closeBracketsIndex = doubleBrackets != -1 ? doubleBrackets : v:null
-        break
+        closeBracketsIndex = doubleBrackets != -1 ? doubleBrackets : -1
+        if closeBracketsIndex != -1 | break | endif
     endfor
 
     var wikilink = (openBracketsIndex >= 0 && closeBracketsIndex > 0) ? str[openBracketsIndex : closeBracketsIndex + 1] : ''
