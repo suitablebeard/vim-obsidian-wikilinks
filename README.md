@@ -8,9 +8,10 @@
     - take a look at the code from fuzzbox
     - take a look at 'completefunc' and 'complete-functions'
 4. Open file in wikilink when pressing a keybind
-    - take a look at vim's special variable `<cfile>`, `<cWORD>` and its variations
-    - if more than one result with the same name, show them in quickfix list
-    - also maybe allow opening other filetypes, though this would require to open them is other apps
+    - [x] take a look at vim's special variable `<cfile>`, `<cWORD>` and its variations
+    - [ ] open file from wikilink
+    - [ ] if more than one result with the same name, show them in quickfix list
+    - [ ] also maybe allow opening other filetypes, though this would require to open them is other apps
 5. Create documentation and help tags
 
 - [x] Filter out directories from pum results
