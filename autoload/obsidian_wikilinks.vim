@@ -9,12 +9,12 @@ export def CreateWikilink(): string
 
     var completion_items = files->mapnew((_, file) => {
         var filename = fnamemodify(file, ':t:r')
+        var fileextension = fnamemodify(file, ':e')
+        fileextension = fileextension != '' ? $'.{fileextension}' : ''
         var parentDir = fnamemodify(file, ':h:t')
-        if parentDir == '.' || parentDir == ''
-            parentDir = fnamemodify(getcwd(), ':t')
-        endif
+        parentDir = (parentDir == '.' || parentDir == '') ? fnamemodify(getcwd(), ':t') : parentDir
 
-        var display_text = $"{parentDir}/{filename}"
+        var display_text = $"{parentDir}/{filename}{fileextension}"
 
         var item = {
         \   word: filename .. ']]',
