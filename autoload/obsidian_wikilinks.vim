@@ -31,3 +31,54 @@ export def CreateWikilink(): string
     return ''
 enddef
 
+export def OpenWikilink(): void
+    var currentLine = getline('.')
+    var cursor_pos = col('.') - 1
+
+    var wikilink: string = GetWikilinkUnderCursor(currentLine, cursor_pos)
+    if wikilink ==# ''
+        echom 'Your cursor must be inside a wikilink to open the file.'
+        return
+    endif
+
+    echom wikilink
+enddef
+
+export def GetWikilinkUnderCursor(str: string, cursor_pos: number): string
+    var cursor_char: string = str[cursor_pos]
+    var openBracketsIndex: number
+    var closeBracketsIndex: number
+
+    # Searches backwards for '[[' from the cursor
+    for i in range(cursor_pos, 0, -1)
+        var char: string = str[i]
+        if char !~# '\[\|\]' | continue | endif
+        if char ==# ']' | return '' | endif
+
+        var doubleBrackets = GetDoubleBrackets(char, str, i)
+        openBracketsIndex = doubleBrackets != -1 ? doubleBrackets : v:null
+        break
+    endfor
+
+    # Searches forwards for ']]' from the cursor
+    for i in range(cursor_pos, strchars(str) - 1, 1)
+        var char: string = str[i]
+        if char !~# '\[\|\]' | continue | endif
+        if char ==# '[' | return '' | endif
+
+        var doubleBrackets = GetDoubleBrackets(char, str, i)
+        closeBracketsIndex = doubleBrackets != -1 ? doubleBrackets : v:null
+        break
+    endfor
+
+    var wikilink = (openBracketsIndex >= 0 && closeBracketsIndex > 0) ? str[openBracketsIndex : closeBracketsIndex + 1] : ''
+
+    return wikilink
+enddef
+
+def GetDoubleBrackets(bracket: string, str: string, position: number): number
+    var nextBracket = str[position + 1] ==# bracket
+    var previousBracket = str[position - 1] ==# bracket
+    var result: number = nextBracket ? position : previousBracket ? position - 1 : -1
+    return result
+enddef

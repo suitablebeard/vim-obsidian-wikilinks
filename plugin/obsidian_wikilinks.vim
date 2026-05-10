@@ -24,5 +24,8 @@ augroup obsidianWikilinksConfig
     autocmd FileType markdown {
         command! -nargs=0 -buffer ObsidianWikilink wikilinks.CreateWikilink()
         inoremap <buffer> <silent> [[ [[<scriptcmd>ObsidianWikilink<CR>
+        command! -nargs=0 -buffer ObsidianWikilinkOpen wikilinks.OpenWikilink()
+        nnoremap <buffer> <silent> <leader>ow <scriptcmd>ObsidianWikilinkOpen<CR>
     }
 augroup END
+
