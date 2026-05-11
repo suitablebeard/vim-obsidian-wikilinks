@@ -1,8 +1,7 @@
 # TODO
 
-1. Update README
-2. Get a LICENSE
-3. Create documentation and help tags
+1. Get a LICENSE
+2. Create documentation and help tags
 
 # Maybe
 

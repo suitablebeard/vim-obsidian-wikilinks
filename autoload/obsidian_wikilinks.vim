@@ -56,6 +56,10 @@ export def OpenWikilink(): void
 
     var numOfFiles = len(files)
     if numOfFiles == 0 
+        if !isdirectory(g:obsidian_wikilinks_newfile_dir)
+            mkdir(g:obsidian_wikilinks_newfile_dir, 'p', 0o700)
+        endif
+
         var filePath = $'{g:obsidian_wikilinks_newfile_dir}/{filename}.md'
         execute $'edit {fnameescape(simplify(filePath))}' 
     endif
