@@ -1,6 +1,6 @@
 vim9script
 
-export def CreateWikilink(): string
+export def InsertWikilink(): string
     InsertStartingBrackets()
 
     # searches files using Vim's built-in 'find'

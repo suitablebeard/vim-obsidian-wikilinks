@@ -33,7 +33,7 @@ augroup obsidianWikilinksConfig
     autocmd FileType markdown {
         command! -nargs=0 -buffer ObsidianWikilinkOpen wikilinks.OpenWikilink()
 
-        inoremap <buffer> <silent> [[ <scriptcmd>wikilinks.CreateWikilink()<CR>
+        inoremap <buffer> <silent> [[ <scriptcmd>wikilinks.InsertWikilink()<CR>
         nnoremap <buffer> <silent> <Plug>ObsidianWikilinkOpen <scriptcmd>ObsidianWikilinkOpen<CR>
     }
 augroup END
