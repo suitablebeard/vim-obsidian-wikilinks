@@ -16,6 +16,8 @@ Similar to Obsidian, you can also open the file for the wikilink under your curs
 
 If, however, the wikilink your trying to open is an "unresolved link" (i.e. refers to an uncreated note) a new markdown file will be created with the name of the wikilink. By default, the new file is created inside a subdirectory of your default directory. By default, that subdirectory is called '+' (a plus symbol).
 
+You can also "create" a wiki by surrounding the selected text with double brackets with `:ObsidianWikilinkCreate` (currently this only works well through a mapping and not by typing the command).
+
 ## Requirements
 
 - Vim >= 9.0 (plugin is written in vim9script, Vim 9+ required, Neovim not supported)
@@ -33,6 +35,9 @@ let g:obsidian_wikilinks_newfile_dir = '/my/newfile/dir/'
 
 " mapping to open wikilink under the cursor
 nmap {your_mapping} <Plug>ObsidianWikilinkOpen
+
+" mapping to surround selected text with double brackets
+vmap {your_mapping} <Plug>ObsidianWikilinkCreate
 ```
 
 ## Instalation

@@ -40,6 +40,16 @@ def InsertStartingBrackets(): void
     cursor(line('.'), new_col)
 enddef
 
+export def CreateWikilink(): void
+    # This function was written by Gemini
+    var save_z = getreg('z')
+    var save_z_type = getregtype('z')
+    execute 'normal! "zy'
+    var content = getreg('z')
+    setreg('z', $"[[{content}]]")
+    execute 'normal! gv"zp'
+    setreg('z', save_z, save_z_type)
+enddef
 
 export def OpenWikilink(): void
     var currentLine = getline('.')
