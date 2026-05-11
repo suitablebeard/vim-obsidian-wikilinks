@@ -40,7 +40,31 @@ export def OpenWikilink(): void
         return
     endif
 
-    echom wikilink
+    var filename = wikilink->matchstr('\[\[\zs.\{-}\ze\]\]')->fnameescape()
+    var files = globpath(g:obsidian_wikilinks_default_dir, $'**/*{filename}*', 0, 1)
+        ->filter((_, path) => !isdirectory(path))
+
+    var numOfFiles = len(files)
+    if numOfFiles == 0 
+        var filePath = $'{g:obsidian_wikilinks_default_dir}/+/{filename}.md'
+        execute $'edit {fnameescape(simplify(filePath))}' 
+    endif
+    if numOfFiles == 1 | execute $'edit {files[0]}' | endif
+    if numOfFiles >= 2
+        var qfItems = files->map((_, filePath) => ({
+                filename: fnamemodify(filePath, ':p:~'),
+                text: fnamemodify(filePath, ':t'),
+                lnum: 1,
+                col: 1
+            }))
+
+        var qflistOpts = {
+            items: qfItems,
+        }
+
+        setqflist([], 'r', qflistOpts)
+        copen
+    endif
 enddef
 
 export def GetWikilinkUnderCursor(str: string, cursorPos: number): string
