@@ -20,7 +20,8 @@ You can also "create" a wiki by surrounding the selected text with double bracke
 
 ## Requirements
 
-- Vim >= 9.0 (plugin is written in vim9script, Vim 9+ required, Neovim not supported)
+- Vim >= 9.0 (plugin is written in vim9script, Vim 9+ required, Neovim not supported);
+- No other dependancies need since the plugin uses Vim's built-in `find`.
 
 ## Configuration
 
