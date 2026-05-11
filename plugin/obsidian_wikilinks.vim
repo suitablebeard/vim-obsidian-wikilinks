@@ -31,10 +31,9 @@ import autoload '../autoload/obsidian_wikilinks.vim' as wikilinks
 augroup obsidianWikilinksConfig
     autocmd!
     autocmd FileType markdown {
-        command! -nargs=0 -buffer ObsidianWikilink wikilinks.CreateWikilink()
         command! -nargs=0 -buffer ObsidianWikilinkOpen wikilinks.OpenWikilink()
 
-        inoremap <buffer> <silent> [[ <scriptcmd>ObsidianWikilink<CR>
+        inoremap <buffer> <silent> [[ <scriptcmd>wikilinks.CreateWikilink()<CR>
         nnoremap <buffer> <silent> <Plug>ObsidianWikilinkOpen <scriptcmd>ObsidianWikilinkOpen<CR>
     }
 augroup END
