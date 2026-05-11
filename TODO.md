@@ -1,5 +1,6 @@
 # TODO
 
+0. Update README
 1. Learn about <SID>, <PLUG> and others
 2. Get a LICENSE
 3. Maybe allow opening other filetypes inside wikilinks, though this would require to open them is other apps
