@@ -4,7 +4,7 @@ export def CreateWikilink(): string
     var col = col('.')
 
     # searches files using Vim's built-in 'find'
-    var files = globpath(g:obsidian_wikilinks_default, '**/*', 0, 1)
+    var files = globpath(g:obsidian_wikilinks_default_dir, '**/*', 0, 1)
         ->filter((_, path) => !isdirectory(path))
 
     var completion_items = files->mapnew((_, file) => {
@@ -34,7 +34,6 @@ enddef
 export def OpenWikilink(): void
     var currentLine = getline('.')
     var cursorPos = col('.') - 1
-
     var wikilink: string = GetWikilinkUnderCursor(currentLine, cursorPos)
     if wikilink ==# ''
         echom 'Your cursor must be inside a wikilink to open the file.'

@@ -15,7 +15,7 @@ endif
 g:loaded_obsidian_wikilinks = 1
 
 # Directory to search for files (default is the current directory)
-g:obsidian_wikilinks_default_directory = get(g:, 'obsidian_wikilinks_default_directory', '.')
+g:obsidian_wikilinks_default_dir = get(g:, 'obsidian_wikilinks_default_dir', '.')
 
 import autoload '../autoload/obsidian_wikilinks.vim' as wikilinks
 
