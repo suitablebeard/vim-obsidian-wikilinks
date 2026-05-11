@@ -1,7 +1,7 @@
 vim9script
 
 export def CreateWikilink(): string
-    var col = col('.')
+    InsertStartingBrackets()
 
     # searches files using Vim's built-in 'find'
     var files = globpath(g:obsidian_wikilinks_default_dir, '**/*', 0, 1)
@@ -25,11 +25,21 @@ export def CreateWikilink(): string
     })
     
     if !empty(completion_items)
-        complete(col, completion_items)
+        complete(col('.'), completion_items)
     endif
 
     return ''
 enddef
+
+def InsertStartingBrackets(): void
+    var line = getline('.')
+    var col_num = col('.')
+    var new_line = line->strpart(0, col_num - 1) .. "[[" .. line->strpart(col_num - 1)
+    setline('.', new_line)
+    var new_col = col_num + 2
+    cursor(line('.'), new_col)
+enddef
+
 
 export def OpenWikilink(): void
     var currentLine = getline('.')
