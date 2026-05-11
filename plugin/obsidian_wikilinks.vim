@@ -14,8 +14,12 @@ if exists('g:loaded_obsidian_wikilinks')
 endif
 g:loaded_obsidian_wikilinks = 1
 
+def NormalizePath(path: string): string
+    return expand(simplify(fnameescape(path)))
+enddef
+
 # Directory to search for files (default is the current directory)
-g:obsidian_wikilinks_default_dir = expand(fnameescape(get(g:, 'obsidian_wikilinks_default_dir', '.')))
+g:obsidian_wikilinks_default_dir = NormalizePath(get(g:, 'obsidian_wikilinks_default_dir', '.'))
 
 import autoload '../autoload/obsidian_wikilinks.vim' as wikilinks
 
