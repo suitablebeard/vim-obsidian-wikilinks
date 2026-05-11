@@ -20,6 +20,7 @@ enddef
 
 # Directory to search for files (default is the current directory)
 g:obsidian_wikilinks_default_dir = NormalizePath(get(g:, 'obsidian_wikilinks_default_dir', '.'))
+g:obsidian_wikilinks_newfile_dir = NormalizePath(get(g:, 'obsidian_wikilinks_newfile_dir', g:obsidian_wikilinks_default_dir .. '/+'))
 
 if !hasmapto('<Plug>ObsidianWikilinkOpen')
     nmap <unique> <leader>ow <Plug>ObsidianWikilinkOpen 

@@ -56,7 +56,7 @@ export def OpenWikilink(): void
 
     var numOfFiles = len(files)
     if numOfFiles == 0 
-        var filePath = $'{g:obsidian_wikilinks_default_dir}/+/{filename}.md'
+        var filePath = $'{g:obsidian_wikilinks_newfile_dir}/{filename}.md'
         execute $'edit {fnameescape(simplify(filePath))}' 
     endif
     if numOfFiles == 1 | execute $'edit {files[0]}' | endif
