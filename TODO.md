@@ -1,5 +1,6 @@
 # TODO
 
+0. Remove hardcoding of mappings
 0. Update README
 1. Learn about <SID>, <PLUG> and others
 2. Get a LICENSE
