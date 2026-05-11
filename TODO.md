@@ -6,7 +6,9 @@
 # Maybe
 
 1. Maybe allow opening other filetypes inside wikilinks, though this would require to open them is other apps
-2. Make file searching truly fuzzy and update results shown while typing
+2. Feat to rename files and update all wikilinks
+3. Feat to generate a table of contents
+4. Make file searching truly fuzzy and update results shown while typing
     - this might not be needed with the since I have the 'completeopt' with the 'fuzzy' option
     - probably with ripgrep
     - take a look at 'completefunc' and 'complete-functions'
