@@ -60,7 +60,7 @@ export def OpenWikilink(): void
         return
     endif
 
-    var filename = wikilink->matchstr('\[\[\zs.\{-}\ze\]\]')->fnameescape()
+    var filename = fnameescape(ExtractFilename(wikilink))
     var files = globpath(g:obsidian_wikilinks_default_dir, $'**/*{filename}*', 0, 1)
         ->filter((_, path) => !isdirectory(path))
 
@@ -132,4 +132,10 @@ def GetDoubleBrackets(bracket: string, str: string, position: number): number
     var previousBracket = str[position - 1] ==# bracket
     var result: number = nextBracket ? position : previousBracket ? position - 1 : -1
     return result
+enddef
+
+def ExtractFilename(text: string): string
+    return text
+        ->matchstr('\[\[\zs.\{-}\ze\]\]')
+        ->split('|')[0]
 enddef
