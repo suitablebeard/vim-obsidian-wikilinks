@@ -35,10 +35,10 @@ let g:obsidian_wikilinks_default_dir = '/my/default/dir/'
 let g:obsidian_wikilinks_newfile_dir = '/my/newfile/dir/'
 
 " mapping to open wikilink under the cursor
-nmap {your_mapping} <Plug>ObsidianWikilinkOpen
+nmap <your_keys> <Plug>ObsidianWikilinkOpen
 
 " mapping to surround selected text with double brackets
-vmap {your_mapping} <Plug>ObsidianWikilinkCreate
+vmap <your_keys> <Plug>ObsidianWikilinkCreate
 ```
 
 ## Instalation
