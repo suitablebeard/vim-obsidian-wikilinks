@@ -82,11 +82,7 @@ export def OpenWikilink(): void
                 col: 1
             }))
 
-        var qflistOpts = {
-            items: qfItems,
-        }
-
-        setqflist([], 'r', qflistOpts)
+        setqflist([], 'r', { items: qfItems })
         copen
     endif
 enddef
