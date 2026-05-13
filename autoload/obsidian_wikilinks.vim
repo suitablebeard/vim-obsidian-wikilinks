@@ -72,8 +72,9 @@ export def OpenWikilink(): void
 
         var filePath = $'{g:obsidian_wikilinks_newfile_dir}/{filename}.md'
         execute $'edit {fnameescape(simplify(filePath))}' 
+        return
     endif
-    if numOfFiles == 1 | execute $'edit {files[0]}' | endif
+    if numOfFiles == 1 | execute $'edit {files[0]}' | return | endif
     if numOfFiles >= 2
         var qfItems = files->map((_, filePath) => ({
                 filename: fnamemodify(filePath, ':p:~'),
@@ -84,6 +85,7 @@ export def OpenWikilink(): void
 
         setqflist([], 'r', { items: qfItems })
         copen
+        return
     endif
 enddef
 
