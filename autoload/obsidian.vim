@@ -23,7 +23,7 @@ export def InsertWikilink(): string
 
         return item
     })
-    
+
     if !empty(completion_items)
         complete(col('.'), completion_items)
     endif
@@ -65,13 +65,13 @@ export def OpenWikilink(): void
         ->filter((_, path) => !isdirectory(path))
 
     var numOfFiles = len(files)
-    if numOfFiles == 0 
+    if numOfFiles == 0
         if !isdirectory(g:obsidian_newfile_dir)
             mkdir(g:obsidian_newfile_dir, 'p', 0o700)
         endif
 
         var filePath = $'{g:obsidian_newfile_dir}/{filename}.md'
-        execute $'edit {fnameescape(simplify(filePath))}' 
+        execute $'edit {fnameescape(simplify(filePath))}'
         return
     endif
     if numOfFiles == 1 | execute $'edit {files[0]}' | return | endif

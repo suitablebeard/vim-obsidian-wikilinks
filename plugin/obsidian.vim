@@ -1,5 +1,5 @@
 " obsidian: adds wikilinks to vim similiar to Obsidian's
-" Last Change: 11-May-2026
+" Last Change: 17-May-2026
 " Maintainer: suitablebeard
 " License:
 
@@ -10,17 +10,16 @@ endif
 vim9script
 
 if exists('g:loaded_obsidian')
-    finish 
+    finish
 endif
 g:loaded_obsidian = 1
 
-def NormalizePath(path: string): string
-    return expand(simplify(fnameescape(path)))
-enddef
+import '../utils/utils.vim'
+import autoload '../autoload/obsidian.vim' as obsidian
 
 # Directory to search for files (default is the current directory)
-g:obsidian_default_dir = NormalizePath(get(g:, 'obsidian_default_dir', '.'))
-g:obsidian_newfile_dir = NormalizePath(get(g:, 'obsidian_newfile_dir', g:obsidian_default_dir .. '/+'))
+g:obsidian_default_dir = utils.NormalizePath(get(g:, 'obsidian_default_dir', '.'))
+g:obsidian_newfile_dir = utils.NormalizePath(get(g:, 'obsidian_newfile_dir', g:obsidian_default_dir .. '/+'))
 
 if !hasmapto('<Plug>ObsidianOpenWikilink')
     nmap <unique> <leader>ow <Plug>ObsidianOpenWikilink 
@@ -29,8 +28,6 @@ endif
 if !hasmapto('<Plug>ObsidianCreateWikilink')
     vmap <unique> <leader>os <Plug>ObsidianCreateWikilink
 endif
-
-import autoload '../autoload/obsidian.vim' as obsidian
 
 augroup obsidianWikilinksConfig
     autocmd!
