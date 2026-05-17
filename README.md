@@ -1,4 +1,4 @@
-# vim-obsidian-wikilinks
+# vim-obsidian
 
 This plugin intends to mimic the wikilinks functionality that Obsidian has, where you can link to other files (notes) by writing their filename inside double brackets.
 
@@ -12,11 +12,11 @@ For better experience, it is recommended to turn on Vim's built-in fuzzy autocom
 set completeopt+=fuzzy
 ```
 
-Similar to Obsidian, you can also open the file for the wikilink under your cursor with `:ObsidianWikilinkOpen` or with a mapping (the default is `<leader>ow`).
+Similar to Obsidian, you can also open the file for the wikilink under your cursor with `:ObsidianOpenWikilink` or with a mapping.
 
 If, however, the wikilink your trying to open is an "unresolved link" (i.e. refers to an uncreated note) a new markdown file will be created with the name of the wikilink. By default, the new file is created inside a subdirectory of your default directory. By default, that subdirectory is called '+' (a plus symbol).
 
-You can also "create" a wiki by surrounding the selected text with double brackets with `:ObsidianWikilinkCreate` (currently this only works well through a mapping and not by typing the command).
+You can also "create" a wiki by surrounding the selected text with double brackets with `:ObsidianCreateWikilink` (currently this only works well through a mapping and not by typing the command).
 
 ## Requirements
 
@@ -29,16 +29,16 @@ You can change the following option as you see fit and add them to your `.vimrc`
 
 ```vimscript
 " directory where this plugin searches for files
-let g:obsidian_wikilinks_default_dir = '/my/default/dir/'
+let g:obsidian_default_dir = '/my/default/dir/'
 
 " directory where new files are created
-let g:obsidian_wikilinks_newfile_dir = '/my/newfile/dir/'
+let g:obsidian_newfile_dir = '/my/newfile/dir/'
 
-" mapping to open wikilink under the cursor
-nmap <your_keys> <Plug>ObsidianWikilinkOpen
+" mapping to open wikilink under the cursor. Default: <leader>ow
+nmap <your_keys> <Plug>ObsidianOpenWikilink
 
-" mapping to surround selected text with double brackets
-vmap <your_keys> <Plug>ObsidianWikilinkCreate
+" mapping to surround selected text with double brackets. Default> [[
+vmap <your_keys> <Plug>ObsidianCreateWikilink
 ```
 
 ## Instalation
@@ -46,5 +46,5 @@ vmap <your_keys> <Plug>ObsidianWikilinkCreate
 Install using your favorite package manager, or use Vim's built-in package support:
 
 ```
- git clone https://github.com/suitablebeard/vim-obsidian-wikilinks ~/.vim/pack/plugins/start/obsidianwikilinks
+ git clone https://github.com/suitablebeard/vim-obsidian ~/.vim/pack/plugins/start/vim-obsidian
 ```
