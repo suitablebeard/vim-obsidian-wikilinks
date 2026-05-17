@@ -2,11 +2,20 @@
 
 1. Get a LICENSE
 2. Create documentation and help tags
+3. Transition from to use `gf` to open wikilink
+    - something like this: <expr> isInWikilink() ? <cmd>openWikilink()<CR> : 'gf'
+4. Add tags feature
+    - (maybe not): auto complete when typing a tag
+    - search for tags in file using `gr`: grepping for the tag and add references to quickfix list
+5. Take a look at Ale and CoC for handling autocompletion
+6. Add command for creating new notes in the vault
+    - currently, the only way to create a new note is by opening an empty link
+    - make the function to create note in vault and use it for empty links
+7. Feat to rename files and update all wikilinks
 
 # Maybe
 
 1. Maybe allow opening other filetypes inside wikilinks, though this would require to open them is other apps
-2. Feat to rename files and update all wikilinks
 3. Feat to generate a table of contents
 4. Make file searching truly fuzzy and update results shown while typing
     - this might not be needed with the since I have the 'completeopt' with the 'fuzzy' option
