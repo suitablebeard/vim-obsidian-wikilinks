@@ -34,7 +34,7 @@ let g:obsidian_default_dir = '/my/default/dir/'
 " directory where new files are created
 let g:obsidian_newfile_dir = '/my/newfile/dir/'
 
-" mapping to open wikilink under the cursor. Default: <leader>ow
+" mapping to open wikilink under the cursor. Default: gd
 nmap <your_keys> <Plug>ObsidianOpenWikilink
 
 " mapping to surround selected text with double brackets. Default> [[

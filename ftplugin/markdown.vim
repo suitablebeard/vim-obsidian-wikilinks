@@ -22,7 +22,7 @@ g:obsidian_default_dir = utils.NormalizePath(get(g:, 'obsidian_default_dir', '.'
 g:obsidian_newfile_dir = utils.NormalizePath(get(g:, 'obsidian_newfile_dir', g:obsidian_default_dir .. '/+'))
 
 if !hasmapto('<Plug>ObsidianOpenWikilink')
-    nmap <unique> <leader>ow <Plug>ObsidianOpenWikilink 
+    nmap <unique> <buffer> gd <Plug>ObsidianOpenWikilink
 endif
 
 if !hasmapto('<Plug>ObsidianCreateWikilink')
