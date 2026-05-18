@@ -4,7 +4,7 @@ export def InsertWikilink(): string
     InsertStartingBrackets()
 
     # searches files using Vim's built-in 'find'
-    var files = globpath(g:obsidian_default_dir, '**/*', 0, 1)
+    var files = globpath(g:obsidian_vault_dir, '**/*', 0, 1)
         ->filter((_, path) => !isdirectory(path))
 
     var completion_items = files->mapnew((_, file) => {
@@ -61,7 +61,7 @@ export def OpenWikilink(): void
     endif
 
     var filename = fnameescape(ExtractFilename(wikilink))
-    var files = globpath(g:obsidian_default_dir, $'**/*{filename}*', 0, 1)
+    var files = globpath(g:obsidian_vault_dir, $'**/*{filename}*', 0, 1)
         ->filter((_, path) => !isdirectory(path))
 
     var numOfFiles = len(files)

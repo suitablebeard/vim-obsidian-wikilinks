@@ -4,7 +4,7 @@ This plugin intends to mimic the wikilinks functionality that Obsidian has, wher
 
 ## Usage
 
-To make use of the wikilinks, first you need to be at a markdown file. Then, when in insert mode, you can type `[[` and a completion menu will display all files inside the default directory recursively, that is, not only the files in that directory but also the ones in its subdirectories. By default, that default directory is your current working directory (which you can see in Vim with `:pwd`).
+To make use of the wikilinks, first you need to be at a markdown file. Then, when in insert mode, you can type `[[` and a completion menu will display all files inside your vault recursively, that is, not only the files in that directory but also the ones in its subdirectories. By default, that default directory is your current working directory (which you can see in Vim with `:pwd`).
 
 For better experience, it is recommended to turn on Vim's built-in fuzzy autocompletion with:
 
@@ -28,11 +28,11 @@ You can also "create" a wiki by surrounding the selected text with double bracke
 You can change the following option as you see fit and add them to your `.vimrc`.
 
 ```vimscript
-" directory where this plugin searches for files
-let g:obsidian_default_dir = '/my/default/dir/'
+" directory where this plugin searches for files. Default: '.' (the current directory, See :pwd)
+let g:obsidian_vault_dir = '/vault/dir/'
 
-" directory where new files are created
-let g:obsidian_newfile_dir = '/my/newfile/dir/'
+" directory where new files are created. Default: {vault_dir}/+
+let g:obsidian_newfile_dir = '/newfile/dir/'
 
 " mapping to open wikilink under the cursor. Default: gd
 nmap <your_keys> <Plug>ObsidianOpenWikilink
