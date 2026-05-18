@@ -9,10 +9,10 @@ endif
 
 vim9script
 
-if exists('g:loaded_obsidian')
+if exists('b:loaded_obsidian')
     finish
 endif
-g:loaded_obsidian = 1
+b:loaded_obsidian = 1
 
 import '../utils/utils.vim'
 import autoload '../autoload/obsidian.vim'
