@@ -1,48 +1,57 @@
 # vim-obsidian
 
-This plugin intends to mimic the wikilinks functionality that Obsidian has, where you can link to other files (notes) by writing their filename inside double brackets.
+A plugin that connects your Obsidian vault with Vim. Lightweight Markdown note-taking with support for wikilinks.
 
 ## Usage
 
-To make use of the wikilinks, first you need to be at a markdown file. Then, when in insert mode, you can type `[[` and a completion menu will display all files inside your vault recursively, that is, not only the files in that directory but also the ones in its subdirectories. By default, that default directory is your current working directory (which you can see in Vim with `:pwd`).
+> [!warning]
+> To use this plugin make sure you are in a markdown file.
 
-For better experience, it is recommended to turn on Vim's built-in fuzzy autocompletion with:
+### Creating a `[[wikilink]]`
+
+There are three ways to create a wikilink:
+
+1. surrounding text with double brackets with the command `:ObsidianCreateWikilink` or with a mapping;
+2. typing `[[` and linking to an existing note in your vault from a completion menu;
+3. typing the wikilink verbatim.
+
+Regarding the completion menu, it is recommended to turn on Vim's built-in fuzzy autocompletion for a better experience with:
 
 ```vimscript
 set completeopt+=fuzzy
 ```
 
-Similar to Obsidian, you can also open the file for the wikilink under your cursor with `:ObsidianOpenWikilink` or with a mapping.
+### Opening a `[[wikilink]]`
 
-If, however, the wikilink your trying to open is an "unresolved link" (i.e. refers to an uncreated note) a new markdown file will be created with the name of the wikilink. By default, the new file is created inside a subdirectory of your default directory. By default, that subdirectory is called '+' (a plus symbol).
+To open a wikilink under your cursor, you can use either the command `:ObsidianOpenWikilink` or a mapping.
 
-You can also "create" a wiki by surrounding the selected text with double brackets with `:ObsidianCreateWikilink` (currently this only works well through a mapping and not by typing the command).
+If, however, the wikilink your trying to open is an "unresolved link", a new markdown file will be created in a subdirectory in your vault.
 
 ## Requirements
 
 - Vim >= 9.0 (plugin is written in vim9script, Vim 9+ required, Neovim not supported);
-- No other dependancies need since the plugin uses Vim's built-in `find`.
+- No other dependancies needed since the plugin uses Vim's built-in `find`.
 
 ## Configuration
 
-You can change the following option as you see fit and add them to your `.vimrc`.
+You can change the following options as you see fit and add them to your `.vimrc`.
 
 ```vimscript
 " directory where this plugin searches for files. Default: '.' (the current directory, See :pwd)
 let g:obsidian_vault_dir = '/vault/dir/'
 
 " directory where new files are created. Default: '{vault_dir}/new_notes'
-" NOTE: if you wan to change the default directory, you need to the provide full path
-let g:obsidian_newfile_dir = '/my/new_notes/'
+" NOTE: this needs to be the full path
+let g:obsidian_newfile_dir = '/new_notes/dir/'
 
 " mapping to open wikilink under the cursor. Default: gd
 nmap <your_keys> <Plug>ObsidianOpenWikilink
 
-" mapping to surround selected text with double brackets. Default> [[
+" mapping to surround selected text with double brackets. Default: [[
 vmap <your_keys> <Plug>ObsidianCreateWikilink
 ```
 
-## Instalation
+## Installation
 
 Install using your favorite package manager, or use Vim's built-in package support:
 
