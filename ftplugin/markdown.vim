@@ -30,10 +30,10 @@ if !hasmapto('<Plug>ObsidianCreateWikilink')
 endif
 
 command! -nargs=0 -buffer ObsidianOpenWikilink obsidian#OpenWikilink()
-nnoremap <buffer> <silent> <Plug>ObsidianOpenWikilink <scriptcmd>ObsidianOpenWikilink<CR>
-
+command! -nargs=0 -buffer ObsidianInsertWikilink obsidian#InsertWikilink()
 command! -nargs=0 -buffer ObsidianCreateWikilink obsidian#CreateWikilink()
-noremap <buffer> <silent> <Plug>ObsidianCreateWikilink <scriptcmd>ObsidianCreateWikilink<CR>
 
-inoremap <buffer> <silent> [[ <scriptcmd>obsidian.InsertWikilink()<CR>
+nnoremap <buffer> <silent> <Plug>ObsidianOpenWikilink <scriptcmd>ObsidianOpenWikilink<CR>
+noremap <buffer> <silent> <Plug>ObsidianCreateWikilink <scriptcmd>ObsidianCreateWikilink<CR>
+inoremap <buffer> <silent> [[ <scriptcmd>ObsidianInsertWikilink<CR>
 
