@@ -18,7 +18,7 @@ import autoload '../autoload/obsidian.vim'
 
 # Directory to search for files (default is the current directory)
 g:obsidian_vault_dir = utils.NormalizePath(get(g:, 'obsidian_vault_dir', '.'))
-g:obsidian_newfile_dir = utils.NormalizePath(get(g:, 'obsidian_newfile_dir', g:obsidian_vault_dir .. '/+'))
+g:obsidian_newfile_dir = utils.NormalizePath(get(g:, 'obsidian_newfile_dir', g:obsidian_vault_dir .. '/new_notes'))
 
 if !hasmapto('<Plug>ObsidianOpenWikilink')
     nmap <unique> <buffer> gd <Plug>ObsidianOpenWikilink

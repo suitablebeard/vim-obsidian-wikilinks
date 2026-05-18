@@ -31,8 +31,9 @@ You can change the following option as you see fit and add them to your `.vimrc`
 " directory where this plugin searches for files. Default: '.' (the current directory, See :pwd)
 let g:obsidian_vault_dir = '/vault/dir/'
 
-" directory where new files are created. Default: {vault_dir}/+
-let g:obsidian_newfile_dir = '/newfile/dir/'
+" directory where new files are created. Default: '{vault_dir}/new_notes'
+" NOTE: if you wan to change the default directory, you need to the provide full path
+let g:obsidian_newfile_dir = '/my/new_notes/'
 
 " mapping to open wikilink under the cursor. Default: gd
 nmap <your_keys> <Plug>ObsidianOpenWikilink
