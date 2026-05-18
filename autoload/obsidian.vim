@@ -65,28 +65,27 @@ export def OpenWikilink(): void
         ->filter((_, path) => !isdirectory(path))
 
     var numOfFiles = len(files)
-    if numOfFiles == 0
-        if !isdirectory(g:obsidian_newfile_dir)
-            mkdir(g:obsidian_newfile_dir, 'p', 0o700)
-        endif
-
-        var filePath = $'{g:obsidian_newfile_dir}/{filename}.md'
-        execute $'edit {fnameescape(simplify(filePath))}'
-        return
-    endif
-    if numOfFiles == 1 | execute $'edit {files[0]}' | return | endif
     if numOfFiles >= 2
         var qfItems = files->map((_, filePath) => ({
-                filename: fnamemodify(filePath, ':p:~'),
-                text: fnamemodify(filePath, ':t'),
-                lnum: 1,
-                col: 1
-            }))
+            filename: fnamemodify(filePath, ':p:~'),
+            text: fnamemodify(filePath, ':t'),
+            lnum: 1,
+            col: 1
+        }))
 
         setqflist([], 'r', { items: qfItems })
         copen
         return
     endif
+
+    var singleFileMatchesFilename: bool = !empty(files) && fnameescape(fnamemodify(files[0], ':t:r')) ==# filename
+    if numOfFiles == 1 && singleFileMatchesFilename
+        execute $'edit {files[0]}' 
+        return 
+    endif
+
+    OpenNewFile(filename) 
+    return 
 enddef
 
 export def GetWikilinkUnderCursor(str: string, cursorPos: number): string
@@ -136,4 +135,15 @@ def ExtractFilename(text: string): string
     return text
         ->matchstr('\[\[\zs.\{-}\ze\]\]')
         ->split('|')[0]
+enddef
+
+def OpenNewFile(filename: string): void
+    if !isdirectory(g:obsidian_newfile_dir)
+        mkdir(g:obsidian_newfile_dir, 'p', 0o700)
+    endif
+
+    var filePath: string = $'{g:obsidian_newfile_dir}/{filename}.md'
+    echom $'edit {simplify(filePath)}'
+    execute $'edit {simplify(filePath)}'
+    return
 enddef
