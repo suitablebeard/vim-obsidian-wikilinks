@@ -1,5 +1,4 @@
 " obsidian: adds wikilinks to vim similiar to Obsidian's
-" Last Change: 17-May-2026
 " Maintainer: suitablebeard
 " License:
 
