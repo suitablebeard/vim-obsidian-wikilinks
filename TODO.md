@@ -13,6 +13,11 @@
     - make the function to create note in vault and use it for empty links
 7. Feat to rename files and update all wikilinks
 
+# After
+
+1. Change plugin description after implementing tags, backlinks, and outgoing links
+    - A plugin that connects your Obsidian vault with Vim. Lightweight Markdown note-taking with native support for wikilinks, tags, and backlinks.
+
 # Maybe
 
 1. Maybe allow opening other filetypes inside wikilinks, though this would require to open them is other apps
